@@ -1,0 +1,24 @@
+table.table.table-striped(ng-if="!data")
+	tbody
+		tr(ng-repeat="dataPack in dataPacks")
+			td {{dataPack.description}}
+			td
+				btn.btn.btn-primary(ng-click="loadDataPack(dataPack.id)") Load
+form(ng-if="data")
+	div.form-group
+		label First Name
+		input.form-control(type="text", name="firstName", placeholder="First Name", ng-model="newGame.firstName")
+	div.form-group
+		label Surname
+		input.form-control(type="text", name="surname", placeholder="Surname", ng-model="newGame.surname")
+	div.form-group(ng-if="newGame.club")
+		label Club
+		input.form-control(type="text", name="club", ng-model="newGame.club.name", readonly)
+		button.btn.btn-primary(ng-click="deselectClub()") Change
+	table.table.table-striped(ng-if="!newGame.club")
+		tbody
+			tr(ng-repeat="club in data.clubs")
+				td {{club.name}}
+				td
+					btn.btn.btn-primary(ng-click="selectClub(club)") Select
+	btn.btn.btn-primary(ng-click="startGame()") Start Game

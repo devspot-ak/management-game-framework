@@ -1,0 +1,8 @@
+id = request.getParameter('id')
+country = entityManager.findById(id)
+h3= country.name
+continent = country.continent
+a.btn.btn-block.btn-default.btn-lg(onclick="fetch('world')")= continent.name
+leagues = country.league.divisions
+for league in leagues
+	a.btn.btn-block.btn-default.btn-lg(onclick="fetch('league?id=#{league.id}')")= league.name

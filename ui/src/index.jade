@@ -1,0 +1,15 @@
+include head
+body(ng-controller="GameCtrl")
+	div.navbar.navbar-inverse.navbar-fixed-top
+		div.container-fluid
+			div.navbar-header
+				span.navbar-brand
+					span MGF Dashboard
+			ul.nav.navbar-nav.navbar-left
+				li
+					a(onclick="fetch('save')") Save
+				li
+					a(onclick="fetch('main')") Logout
+			div#state
+	div#wrapper.container-fluid
+		div#content

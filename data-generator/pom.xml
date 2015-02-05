@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>management-game-framework-data-generator</artifactId>
+	<packaging>jar</packaging>
+	<name>Management Game Framework - Data Generator</name>
+	<description>Management Game Framework - Data Generator</description>
+	
+    <parent>
+        <groupId>biz.devspot.management-game-framework</groupId>
+        <artifactId>management-game-framework-parent</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+   
+	<dependencies>
+        <dependency>
+            <groupId>biz.devspot.management-game-framework</groupId>
+            <artifactId>management-game-framework-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.github.fakemongo</groupId>
+            <artifactId>fongo</artifactId>
+            <version>1.5.0</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+
+</project>

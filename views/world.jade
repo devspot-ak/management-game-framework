@@ -1,0 +1,6 @@
+world = state.world
+for continent in world.continents
+	div
+		h3= continent.name
+		for country in continent.countries
+			a.btn.btn-block.btn-default.btn-lg(onclick="fetch('country?id=#{country.id}')")= country.name

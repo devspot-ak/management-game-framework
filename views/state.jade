@@ -1,0 +1,17 @@
+ul.nav.navbar-nav.navbar-right
+	li
+		a(onclick="fetch('home')")
+			span Season #{state.season}, Week #{state.week}, Day #{state.day}
+	li
+		a(onclick="fetch('home')") Home
+	li
+		a Messages
+	li
+		if state.status == "normal"
+			a(onclick="invoke('advance', {}, 'home')") Continue
+		if state.status == "pre-match"
+			a(onclick="invoke('playMatches', {}, 'home')") Play
+		if state.status == "post-match"
+			a(onclick="invoke('advance', {}, 'home')") Continue
+		if state.status == "end-of-season"
+			a(onclick="invoke('endSeason', {}, 'home')") End Season

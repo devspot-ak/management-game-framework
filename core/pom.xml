@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>management-game-framework-core</artifactId>
+	<packaging>jar</packaging>
+	<name>Management Game Framework - Core</name>
+	<description>Management Game Framework - Core</description>
+	
+    <parent>
+        <groupId>biz.devspot.management-game-framework</groupId>
+        <artifactId>management-game-framework-parent</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+   
+	<dependencies>
+        <dependency>
+            <groupId>biz.devspot.entity-framework</groupId>
+            <artifactId>entity-framework-core</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>biz.devspot.fixture-generator</groupId>
+            <artifactId>fixture-generator</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>2.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20140107</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.co.revsys.resource-repository</groupId>
+            <artifactId>resource-repository-core</artifactId>
+            <version>0.2.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wink</groupId>
+            <artifactId>wink-server</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wink</groupId>
+            <artifactId>wink-spring-support</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>de.neuland-bfi</groupId>
+            <artifactId>jade4j</artifactId>
+            <version>0.4.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.pegdown</groupId>
+                    <artifactId>pegdown</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.github.fakemongo</groupId>
+            <artifactId>fongo</artifactId>
+            <version>1.5.0</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+
+</project>

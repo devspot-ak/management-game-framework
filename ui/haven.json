@@ -1,0 +1,44 @@
+{
+    "name": "management-game-framework",
+    "version": "0.1.0-SNAPSHOT",
+    "artifacts": [{
+        "files": [{
+            "target": "."
+        }]
+    }],
+    "repositories": {
+        "distribution": [{
+            "url": "http://internal.echo-central.com/haven-repository"
+        }],
+        "dependencies": [{
+            "type": "haven",
+            "url": "http://build.revsys.co.uk/haven-repository"
+        }, {
+            "type": "haven",
+            "url": "http://internal.echo-central.com/haven-repository"
+        }]
+    },
+    "dependencies": [{
+        "name": "angular-ui-bootstrap",
+        "version": "0.12.0",
+        "includes": ["ui-bootstrap-tpls.js"]
+    }, {
+        "name": "angularjs",
+        "version": "1.2.16",
+        "includes": ["angular.js"]
+    }, {
+        "name": "angular-route",
+        "version": "1.2.16",
+        "includes": ["angular-route.js"]
+    }, {
+        "name": "jquery",
+        "version": "2.1.1",
+        "includes": ["jquery.js"]
+    }, {
+        "name": "bootstrap",
+        "version": "3.1.1",
+        "includes": [
+            "bootstrap.js"
+        ]
+    }]
+}

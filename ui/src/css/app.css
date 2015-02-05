@@ -1,0 +1,49 @@
+body {
+  padding-top: 50px;
+}
+
+.navbar{
+    border-radius:0px;
+}
+
+.navbar-brand small{
+    font-size:70%;
+    margin-left:1em;
+}
+
+.page-header{
+    text-align:center;
+}
+
+.sidebar{
+    border-top-left-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+    position:fixed;
+    top:191px;
+    bottom:0px;
+    margin-bottom:0px;
+    overflow-x:hidden;
+}
+
+.tab-content{
+  position:fixed;
+  top:191px;
+  bottom:0px;
+  margin-bottom:0px;
+  border-bottom-left-radius:0px;
+  border-bottom-right-radius:0px;
+  overflow-x:hidden;
+}
+
+.row-clickable{
+  cursor:pointer;
+}
+
+.page-content.full-page{
+  margin-top:20px;
+}
+
+.text-align-center{
+  text-align:center;
+}

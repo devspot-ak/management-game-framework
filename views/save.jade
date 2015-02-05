@@ -1,0 +1,12 @@
+extends titled-layout
+block title
+	span Save Game
+block content
+	form
+		div.form-group
+			div.input-group
+				input.form-control(type="text", ng-model="context.name", value="", placeholder="Enter a name for this game")
+				span.input-group-btn
+					button.btn.btn-default(onclick="invoke('save', context, 'home')") Save Game
+	for savedGame in persistenceManager.savedGames
+		button.btn.btn-default.btn-block.btn-lg(ng-click="context.name = '#{savedGame.name}'")= savedGame.name

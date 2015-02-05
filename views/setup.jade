@@ -1,0 +1,25 @@
+extends titled-layout
+block setup
+	world = state.world
+block title
+	span Select Your Club
+block content
+	form
+		div.form-group
+			label First Name
+			input.form-control(type="text", name="firstName", placeholder="First Name", ng-model="context.firstName")
+		div.form-group
+			label Surname
+			input.form-control(type="text", name="surname", placeholder="Surname", ng-model="context.surname")
+		div.form-group(ng-if="context.club")
+			label Club
+			input.form-control(type="text", name="club", ng-model="context.club.name", readonly)
+			button.btn.btn-primary(ng-click="context.club = null") Change
+		table.table.table-striped(ng-if="!context.club")
+			tbody
+				for club in world.continents[0].countries[0].league.divisions[0].clubs
+					tr
+						td= club.name
+						td
+							btn.btn.btn-primary(ng-click="context.club = {id: '#{club.id}', name: '#{club.name}'}") Select
+		btn.btn.btn-primary.btn-block.btn-lg(onclick="invoke('start', {firstName: context.firstName, surname: context.firstName, club: context.club.id}, 'home')") Start Game
