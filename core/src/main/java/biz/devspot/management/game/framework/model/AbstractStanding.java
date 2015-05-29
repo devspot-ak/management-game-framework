@@ -1,5 +1,7 @@
 package biz.devspot.management.game.framework.model;
 
+import biz.devspot.management.game.framework.data.AbstractStandingDO;
+
 public abstract class AbstractStanding<DO extends AbstractStandingDO, D extends AbstractDivision, C extends AbstractClub, F extends AbstractFixture> extends MGFEntity<DO> {
     
     public AbstractStanding(D division, C club) {

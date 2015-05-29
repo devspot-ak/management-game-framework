@@ -1,0 +1,117 @@
+body {
+  padding-top: 50px;
+}
+
+.navbar{
+    border-radius:0px;
+}
+
+.page-header{
+    text-align:center;
+}
+
+.sidebar{
+    border-top-left-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+}
+
+.tab-content{
+  border-bottom-left-radius:0px;
+  border-bottom-right-radius:0px;
+}
+
+.row-clickable{
+  cursor:pointer;
+}
+
+.page-content{
+  margin-top:20px;
+}
+
+.text-align-center{
+  text-align:center;
+}
+
+.message-list a span{
+  line-height:1em;
+  height:1em;
+  overflow:hidden;
+  display:block;
+}
+
+.message-list li, .message-list li.disabled a{
+  cursor:pointer!important;
+}
+
+.message{
+  height:90%;
+}
+
+#console{
+  position:fixed;
+  bottom:0px;
+  width:100%;
+}
+
+.table-nostyle{
+  background-color:inherit!important;
+}
+
+.table-nostyle td{
+  border-top:none!important;
+}
+
+.progress-compact{
+  margin-bottom:0px;
+}
+
+.message-body{
+  padding:20px;
+}
+
+#home-button, #back-button{
+  margin-top:5px;
+  padding-left:30px;
+  padding-right:30px;
+  margin-right:20px;
+}
+
+#home-button{
+  float:right;
+  margin-right:10px;
+}
+
+#state{
+  float:right;
+  margin-top:5px;
+  margin-right:10px;
+}
+
+#back-button{
+  float:left;
+  margin-left:10px;
+}
+
+.navbar-header{
+  float:none;
+}
+
+.sidebar-ctrl{
+  position:absolute;
+  padding:0px;
+}
+
+.sidebar.collapsable{
+  position:absolute;
+  z-index:999;
+}
+
+.condensed{
+  padding:0px;
+  margin:0px;
+}
+
+.font-small{
+  zfont-size:80%;
+}

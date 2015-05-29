@@ -16,7 +16,6 @@ public abstract class AbstractCountryBuilder<B extends AbstractCountryBuilder, C
     protected AbstractContinent continent;
     
     public AbstractCountryBuilder(AbstractLeagueBuilder leagueBuilder) {
-        super(true);
         this.leagueBuilder = leagueBuilder;
     }
     

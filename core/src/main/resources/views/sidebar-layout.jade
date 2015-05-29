@@ -1,0 +1,11 @@
+extends layout
+block body
+	div.page-content.row
+			div.sidebar-ctrl.visible-xs.visible-sm.col-xs-1
+				button.btn.btn-default(ng-click="context.sidebar = true", ng-hide="context.sidebar")
+					span.glyphicon.glyphicon-align-justify
+			div.sidebar.col-xs-4.col-md-2.well(ng-show="context.sidebar || !portable.active", ng-class="{collapsable: portable.active}")
+				block sidebar
+			div.tab-content.col-xs-offset-1.col-xs-11.col-md-offset-0.col-md-10.well
+				block content
+	block modals

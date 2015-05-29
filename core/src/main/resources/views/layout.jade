@@ -1,0 +1,16 @@
+include mgf-mixins
+block setup
+div.navbar.navbar-inverse.navbar-fixed-top
+	div.container-fluid
+		div.navbar-header
+			button#back-button.btn.btn-default Back
+			span.navbar-brand
+				block title
+			if state != null && state.manager != null
+				block home-button
+					button#home-button.btn.btn-default(onclick="fetch('home')") Home
+				button#state.hidden-xs.hidden-sm.btn.btn-default(disabled="disabled") Season #{state.season}, Week #{state.week}, Day #{state.day}
+				button#state.hidden-md.hidden-lg.btn.btn-default(disabled="disabled") S#{state.season}:W#{state.week}:D#{state.day}
+div#wrapper.container-fluid
+	div
+		block body

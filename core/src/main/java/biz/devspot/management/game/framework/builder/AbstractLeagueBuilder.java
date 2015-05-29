@@ -13,7 +13,6 @@ public abstract class AbstractLeagueBuilder<B extends AbstractLeagueBuilder, L e
     protected int numberOfDivisions = 1;
     
     public AbstractLeagueBuilder(AbstractClubBuilder clubBuilder, AbstractDivisionBuilder divisionBuilder) {
-        super(true);
         this.divisionBuilder = divisionBuilder;
     }
     

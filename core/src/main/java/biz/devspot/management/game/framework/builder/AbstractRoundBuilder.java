@@ -10,7 +10,6 @@ public abstract class AbstractRoundBuilder<B extends AbstractRoundBuilder, R ext
     protected AbstractCompetition competition;
 
     public AbstractRoundBuilder() {
-        super(true);
     }
     
     public B setDay(int day){

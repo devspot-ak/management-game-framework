@@ -1,0 +1,29 @@
+extends tabbed-layout
+block setup
+	id = request.getParameter('id')
+	tab = request.getParameter('tab', 'squad');
+	club = entityManager.findById(id)
+block title
+	span= club.name
+block tabs
+	//+tab('profile', 'Profile')
+	+tab('squad', 'Squad')
+	+tab('fixtures', 'Fixtures')
+block content
+	if(tab == 'profile')
+		a.btn.btn-block.btn-default(onclick="fetch('league?id=#{club.league.id}')")= club.league.name
+	if(tab == 'squad')
+		for player in club.players
+			a.btn.btn-block.btn-default(onclick="fetch('player?id=#{player.id}')")= player.name
+	if(tab == 'fixtures')
+		table.table.table-striped.table-hover.text-align-center
+			tbody
+				for fixture in club.fixtures
+					tr
+						td= 'Week ' + fixture.week + ', Day ' + fixture.day
+						td= fixture.homeClub.name
+						if(fixture.status == "Complete")
+							td= fixture.homeScore + ' - ' + fixture.awayScore
+						else
+							td vs
+						td= fixture.awayClub.name

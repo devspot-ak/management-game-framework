@@ -7,9 +7,18 @@ body(ng-controller="GameCtrl")
 					span MGF Dashboard
 			ul.nav.navbar-nav.navbar-left
 				li
+					a(ng-click="debug.show = !debug.show") Console
+				li
 					a(onclick="fetch('save')") Save
 				li
 					a(onclick="fetch('main')") Logout
 			div#state
 	div#wrapper.container-fluid
 		div#content
+	div#console(ng-show="debug.show")
+		div#console-output.well
+			div.console-item(ng-repeat="item in debug.history")
+				div {{item.cmd}}
+				div {{item.result}}
+		form.form(ng-submit="debug.exec()")
+			input.form-control(type="text", value="", ng-model="debug.cmd")

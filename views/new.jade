@@ -1,8 +1,0 @@
-extends titled-layout
-block setup
-	dataPacks = persistenceManager.getDataPacks()
-block title
-	span Select Data Pack
-block content
-	for dataPack in dataPacks
-		a.btn.btn-block.btn-default.btn-lg(onclick="invoke('load/new', {id: '#{dataPack.id}'}, 'setup')")= dataPack.description

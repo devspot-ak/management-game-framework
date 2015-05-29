@@ -1,5 +1,6 @@
 package biz.devspot.management.game.framework.model;
 
+import biz.devspot.management.game.framework.data.AbstractCompetitionDO;
 import biz.devspot.entity.framework.core.EntityManagerFactory;
 import biz.devspot.entity.framework.core.query.QueryBuilder;
 import biz.devspot.management.game.framework.match.MatchEngine;

@@ -1,0 +1,44 @@
+extends sidebar-layout
+block setup
+	query = transferList.query
+	players = transferList.playerList;
+	script(type='text/javascript').
+		context.form = !{query.toString()};
+block title
+	span Transfer List
+block sidebar
+	form
+		div.checkbox
+			label
+				input(type="checkbox", ng-model="context.form.filterByAge", value="true")
+				span Filter by Age
+		div.form-group(ng-if="context.form.filterByAge")
+			label Maximum Age
+			+number-input("context.form.age")
+		div.checkbox
+			label
+				input(type="checkbox", ng-model="context.form.filterByPrice", value="true")
+				span Filter by Asking Price
+		div.form-group(ng-if="context.form.filterByPrice")
+			label Maximum Asking Price
+			+number-input("context.form.askingPrice")
+		div.checkbox
+			label
+				input(type="checkbox", ng-model="context.form.filterByAttributes", value="true")
+				span Filter by Attributes
+		div(ng-if="context.form.filterByAttributes")
+			div.form-group
+				label Passing
+				+number-input("context.form.attributes.passing")
+			div.form-group
+				div.input-group
+					select.form-control
+						option(value="tackling") Tacking
+						option(value="passing") Passing
+					span.input-group-btn
+						button.btn.btn-default Add
+		button.btn.btn-primary.btn-block(onclick="invoke('updateTransferQuery', context.form)") Search
+block content
+	table.table
+		for player in players
+			a.btn.btn-default.btn-lg.btn-block(onclick="fetch('player?id=#{player.id}')")= player.name

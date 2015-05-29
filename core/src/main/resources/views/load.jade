@@ -1,0 +1,6 @@
+extends full-page-layout
+block title
+	span Load Game
+block content
+	for savedGame in persistenceManager.savedGames
+		button.btn.btn-default.btn-block(onclick="invoke('load', {name: '#{savedGame.name}'}, 'home')")= savedGame.name

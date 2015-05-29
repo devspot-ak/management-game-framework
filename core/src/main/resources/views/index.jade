@@ -1,0 +1,15 @@
+doctype html
+html(ng-app="game")
+	head
+		title= localiser.get('gameName')
+		:assets
+			theme.css
+			core.css
+			webjar:jquery.js
+			webjar:bootstrap.js
+			webjar:angular.js
+			webjar:ui-bootstrap-tpls.js
+			webjar:angular-screenmatch.js
+			core.js
+	body(ng-controller="GameCtrl")
+		div#content

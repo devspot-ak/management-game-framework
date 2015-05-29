@@ -1,5 +1,6 @@
 package biz.devspot.management.game.framework.state;
 
+import biz.devspot.entity.framework.core.query.Query;
 import biz.devspot.management.game.framework.model.AbstractManager;
 import biz.devspot.management.game.framework.model.AbstractWorld;
 

@@ -47,3 +47,40 @@ body {
 .text-align-center{
   text-align:center;
 }
+
+.message-list a span{
+  line-height:1em;
+  height:1em;
+  overflow:hidden;
+  display:block;
+}
+
+.message-list li, .message-list li.disabled a{
+  cursor:pointer!important;
+}
+
+.message{
+  height:90%;
+}
+
+#console{
+  position:fixed;
+  bottom:0px;
+  width:100%;
+}
+
+.table-nostyle{
+  background-color:inherit!important;
+}
+
+.table-nostyle td{
+  border-top:none!important;
+}
+
+.progress-compact{
+  margin-bottom:0px;
+}
+
+.message-body{
+  padding:20px;
+}

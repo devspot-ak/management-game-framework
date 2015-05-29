@@ -1,0 +1,6 @@
+extends full-page-layout
+block title
+	span= localiser.get("gameName")
+block content
+	a.btn.btn-block.btn-default(onclick="fetch('new')") New Game
+	a.btn.btn-block.btn-default(onclick="fetch('load')") Load Game

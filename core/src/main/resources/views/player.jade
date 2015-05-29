@@ -1,0 +1,54 @@
+extend tabbed-layout
+block setup
+	id = request.getParameter('id')
+	tab = request.getParameter('tab', 'profile')
+	player = entityManager.findById(id)
+block title
+	span= player.name
+block tabs
+	+tab('profile', 'Profile')
+block actions
+	//+action('release', 'Release')
+	//if(player.status == "Under Contract")
+	//	+action('transferList', 'Transfer List')
+	//if(player.status == "Transfer Listed")
+	//	+action('removeFromTransferList', 'Remove From Transfer List')
+	//+action('makeOffer', 'Make Offer')
+block content
+	if(tab == 'profile')
+		table.table
+			tr
+				td Status
+				td #{player.status}
+			tr
+				td Age
+				td #{player.age}
+			tr
+				td Club
+				td 
+					a.btn.btn-default(onclick="fetch('club?id=#{player.club.id}')")= player.club.name
+		div.col-xs-4.col-md-2
+			table.table.table-nostyle
+				for attribute in player.attributes
+					tr
+						td= attribute.name
+		div.col-xs-8.col-md-10
+			table.table.table-nostyle
+				for attribute in player.attributes
+					value = player.getAttributeValue(attribute.name)
+					tr
+						td
+							div.progress.progress-compact
+								div.progress-bar(style="width:#{value}%")= value + '%'
+block modals
+	+modal-form("release", "Release", id + "/release")
+		p Are you sure you want to release this player?
+	+modal-form("transferList", "Transfer List", id + "/transferList")
+		div.form-group
+			label Asking Price
+			+number-input("context.form.askingPrice")
+	+modal-form("removeFromTransferList", "Remove From Transfer List", id + "/removeFromTransferList")
+		p Are you sure you want to remove this player from the transfer list?
+	+modal-form("makeOffer", "Make An Offer", id + "/makeOffer")
+		div.form-group
+			+number-input("context.form.offerPrice")

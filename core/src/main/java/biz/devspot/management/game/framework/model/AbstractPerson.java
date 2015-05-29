@@ -1,5 +1,7 @@
 package biz.devspot.management.game.framework.model;
 
+import biz.devspot.management.game.framework.data.AbstractPersonDO;
+
 public abstract class AbstractPerson<DO extends AbstractPersonDO> extends MGFEntity<DO> {
     
     public AbstractPerson(String firstName, String surname) {

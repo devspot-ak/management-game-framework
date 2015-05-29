@@ -1,0 +1,7 @@
+div#console(ng-show="debug.show")
+	div#console-output.well
+		div.console-item(ng-repeat="item in debug.history")
+			div {{item.cmd}}
+			div {{item.result}}
+	form.form(ng-submit="debug.exec()")
+		input.form-control(type="text", value="", ng-model="debug.cmd")

@@ -11,8 +11,7 @@ public abstract class AbstractPersonBuilder<B extends AbstractPersonBuilder, P e
     protected String firstName;
     protected String surname;
 
-    public AbstractPersonBuilder(boolean managed) {
-        super(managed);
+    public AbstractPersonBuilder() {
     }
 
     public B setFirstName(String firstName) {

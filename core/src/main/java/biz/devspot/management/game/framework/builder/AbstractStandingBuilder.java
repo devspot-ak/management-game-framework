@@ -10,7 +10,6 @@ public abstract class AbstractStandingBuilder<B extends AbstractStandingBuilder,
     protected AbstractDivision division;
 
     public AbstractStandingBuilder() {
-        super(true);
     }
 
     public B setClub(AbstractClub club) {

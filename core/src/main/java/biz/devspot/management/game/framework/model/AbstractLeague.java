@@ -1,5 +1,6 @@
 package biz.devspot.management.game.framework.model;
 
+import biz.devspot.management.game.framework.data.AbstractLeagueDO;
 import biz.devspot.entity.framework.core.EntityManagerFactory;
 import biz.devspot.entity.framework.core.query.QueryBuilder;
 import java.util.List;

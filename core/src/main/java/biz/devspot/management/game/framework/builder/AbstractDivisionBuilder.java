@@ -27,7 +27,6 @@ public abstract class AbstractDivisionBuilder<B extends AbstractDivisionBuilder,
     protected AbstractLeague league;
 
     public AbstractDivisionBuilder(AbstractClubBuilder clubBuilder, AbstractStandingBuilder standingBuilder, AbstractRoundBuilder roundBuilder, AbstractFixtureBuilder fixtureBuilder) {
-        super(true);
         this.clubBuilder = clubBuilder;
         this.standingBuilder = standingBuilder;
         this.roundBuilder = roundBuilder;

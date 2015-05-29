@@ -8,7 +8,6 @@ public abstract class AbstractPlayerBuilder<B extends AbstractPlayerBuilder, P e
     protected AbstractClub club;
 
     public AbstractPlayerBuilder() {
-        super(true);
     }
     
     public B setClub(AbstractClub club){

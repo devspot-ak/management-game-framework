@@ -13,7 +13,6 @@ public abstract class AbstractWorldBuilder<B extends AbstractWorldBuilder, W ext
     protected int continents = 1;
 
     public AbstractWorldBuilder(AbstractContinentBuilder continentBuilder) {
-        super(true);
         this.continentBuilder = continentBuilder;
     }
     

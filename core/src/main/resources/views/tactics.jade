@@ -1,0 +1,78 @@
+extends tabbed-layout
+block setup
+	manager = state.manager
+	club = manager.club
+	tactics = club.tactics
+	tab = request.getParameter('tab', 'lineup');
+	| <script>
+	| context.lineup = [];
+	| context.players = {};
+	for player in club.players
+		| context.players['#{player.id}'] = {id: '#{player.id}', name: '#{player.name}'};
+	for playerTactics in tactics.playerTactics
+		if(playerTactics.player == null)
+			| context.lineup.push({id: '#{playerTactics.id}', position: '#{playerTactics.position.name}', player: null});
+		else
+			| context.lineup.push({id: '#{playerTactics.id}', position: '#{playerTactics.position.name}', player: {id: '#{playerTactics.player.id}', name: '#{playerTactics.player.name}'}});
+			| delete context.players['#{playerTactics.player.id}'];
+	| </script>
+	script.
+		context.addPlayerToLineup = function(player){
+			for(var i=0; i<context.lineup.length; i++){
+				var playerTactics = context.lineup[i];
+				if(playerTactics.player == null){
+					playerTactics.player = player;
+					delete context.players[player.id];
+					break;
+				}
+			}
+		};
+		context.removePlayerFromLineup = function(playerTactics){
+			var player = playerTactics.player;
+			context.players[player.id] = player;
+			playerTactics.player = null;
+		}
+		context.getLineup = function(){
+			var lineup = {};
+			angular.forEach(context.lineup, function(playerTactics){
+				if(playerTactics.player){
+					lineup[playerTactics.id] = playerTactics.player.id;
+				}else{
+					lineup[playerTactics.id] = null;
+				}
+			});
+			return lineup;
+		}
+block title
+	span Tactics
+block tabs
+	+tab('lineup', 'Lineup')
+block content
+	if(tab == 'lineup')
+		div.col-xs-6.col-md-4(ng-class="{condensed: portable.active}")
+			table.table.table-nostyle.table-condensed
+				tr(ng-repeat="playerTactics in context.lineup")
+					td 
+						span.btn.btn-default(disabled) {{playerTactics.position}}
+					td
+						span(ng-hide="playerTactics.player") 
+						div.btn-group.btn-group-justified(ng-show="playerTactics.player") 
+							div.btn-group(style="width:70%")
+								button.btn.btn-default
+									span {{playerTactics.player.name}}
+							div.btn-group(style="width:30%")
+								button.btn.btn-danger(ng-click="context.removePlayerFromLineup(playerTactics)")
+									span.glyphicon.glyphicon-remove
+		div.col-xs-6.col-md-8(ng-class="{condensed: portable.active}")
+			table.table.table-nostyle.table-condensed
+				tr(ng-repeat="player in context.players")
+					td
+						div.btn-group.btn-group-justified
+							div.btn-group(style="width:30%")
+								button.btn.btn-primary(ng-click="context.addPlayerToLineup(player)")
+									span.glyphicon.glyphicon-backward 
+							div.btn-group(style="width:70%")
+								button.btn.btn-default
+									span {{player.name}}
+		div.col-xs-12
+			a.btn.btn-block.btn-default(onclick="invoke('saveLineup', context.getLineup(), 'tactics')") Save

@@ -14,7 +14,6 @@ public abstract class AbstractFixtureBuilder<B extends AbstractFixtureBuilder, F
     protected int day;
 
     public AbstractFixtureBuilder() {
-        super(true);
     }
 
     public B setRound(AbstractRound round) {

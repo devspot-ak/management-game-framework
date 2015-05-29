@@ -1,5 +1,6 @@
 package biz.devspot.management.game.framework.model;
 
+import biz.devspot.management.game.framework.data.AbstractFixtureDO;
 import biz.devspot.management.game.framework.match.MatchEngine;
 import biz.devspot.management.game.framework.model.state.FixtureStates;
 

@@ -1,0 +1,32 @@
+extends sidebar-layout
+block setup
+	limit = 10;
+	messages = state.manager.getMessages(limit)
+	selectedMessage = messages[0];
+	selectedMessageId = request.getParameter("message");
+	if selectedMessageId != null
+		selectedMessage = entityManager.findById(selectedMessageId)
+	:invoke
+		selectedMessage.markAsRead()
+block title
+	span Your Messages
+block sidebar
+	ul.nav.nav-sidebar.nav-pills.nav-stacked.tabs.message-list
+		for message in messages
+			class = ""
+			if message.hasBeenRead()
+				class = "disabled"
+			if message.id == selectedMessage.id
+				class = "active"
+			li(class="#{class}")
+				a(onclick="fetch('messages?message=#{message.id}')")
+					span= message.subject
+block content
+	div.panel.panel-primary.message
+		div.panel-heading= selectedMessage.subject
+		div.panel-body
+			div.message-body= selectedMessage.body
+			div.message-actions
+				if utils.instanceOf(selectedMessage, "biz.devspot.management.game.framework.model.TransferOfferMessage")
+					player = selectedMessage.player
+					a.btn.btn-block.btn-default.btn-lg(onclick="fetch('player?id=#{player.id}')")= player.name

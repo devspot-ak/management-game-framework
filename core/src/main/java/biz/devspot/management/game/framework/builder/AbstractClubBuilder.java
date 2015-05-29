@@ -16,7 +16,6 @@ public abstract class AbstractClubBuilder<B extends AbstractClubBuilder, CL exte
     protected int numberOfPlayers = 5;
 
     public AbstractClubBuilder(AbstractPlayerBuilder playerBuilder) {
-        super(true);
         this.playerBuilder = playerBuilder;
     }
     

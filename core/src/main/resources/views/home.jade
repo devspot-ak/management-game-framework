@@ -1,0 +1,46 @@
+extends full-page-layout
+block setup
+	manager = state.manager
+	club = manager.club
+block title
+	span Home
+block home-button
+	if state.status == "normal"
+		button#home-button.btn.btn-default(onclick="invoke('advance', {}, 'home')") Continue
+	if state.status == "pre-match"
+		button#home-button.btn.btn-default(onclick="invoke('playMatches', {}, 'home')") Play
+	if state.status == "post-match"
+		button#home-button.btn.btn-default(onclick="invoke('advance', {}, 'home')") Continue
+	if state.status == "end-of-season"
+		button#home-button.btn.btn-default(onclick="invoke('endSeason', {}, 'home')") End Season
+block content
+	if state.status == "normal"
+		a.btn.btn-block.btn-default(onclick="fetch('club?id=#{club.id}')") Squad
+		a.btn.btn-block.btn-default(onclick="fetch('league?id=#{club.league.id}')") League
+		a.btn.btn-block.btn-default(onclick="fetch('tactics')") Tactics
+		a.btn.btn-block.btn-default(onclick="fetch('messages')") Messages
+		a.btn.btn-block.btn-default(onclick="fetch('save')") Save
+		a.btn.btn-block.btn-default(onclick="fetch('main')") Quit
+		//a.btn.btn-block.btn-default.btn-lg Finances
+		//a.btn.btn-block.btn-default.btn-lg(onclick="fetch('transfer-list')") Transfer List
+		//a.btn.btn-block.btn-default.btn-lg Search
+		//a.btn.btn-block.btn-default.btn-lg(onclick="fetch('world')") World
+		//a.btn.btn-block.btn-default.btn-lg(onclick="invoke('advance', {}, 'home')") Advance
+	if state.status == "pre-match"
+		table.table.table-striped.table-hover.text-align-center
+			tbody
+				for fixture in club.league.currentRound.fixtures
+					tr
+						td= fixture.homeClub.name
+						td vs
+						td= fixture.awayClub.name
+	if state.status == "post-match"		
+			table.table.table-striped.table-hover.text-align-center
+				tbody
+					for fixture in club.league.previousRound.fixtures
+						tr
+							td= fixture.homeClub.name
+							td= fixture.homeScore + ' - ' + fixture.awayScore
+							td= fixture.awayClub.name
+	if state.status == "end-of-season"
+		h3.text-align-center= "End of Season " + state.season

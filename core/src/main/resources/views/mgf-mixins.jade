@@ -1,0 +1,31 @@
+mixin tab(tabUrl, label)
+	classes = ''
+	if tabUrl == tab
+		classes = 'active'
+	li(class=classes) 
+		a(onclick="fetchTab('#{tabUrl}')")= label
+
+mixin action(action, label)
+	li
+		a(data-toggle="modal", data-target="##{action}")= label
+
+mixin modal-form(formId, title, action)
+	div.modal.fade(id="#{formId}")
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type="button", data-dismiss="modal")
+						span &times;
+					h4= title
+				div.modal-body
+					block
+				div.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Cancel
+					button.btn.btn-primary(type="button", onclick="invoke('#{action}', context.form)") Confirm
+
+mixin number-input(model)
+	div.input-group
+		input.form-control(type="text", ng-model="#{model}")
+		span.input-group-btn
+			button.btn.btn-default(ng-click="#{model} = #{model} - 1") -
+			button.btn.btn-default(ng-click="#{model} = #{model} + 1") +

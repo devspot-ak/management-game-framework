@@ -3,7 +3,7 @@ var RemoteServer = function(url) {
 	this.url = url;
 
 	this.fetch = function(view, onSuccess, onError) {
-		$.ajax(this.url + "view/" + view, {
+		$.ajax(this.url + view, {
 			success: function(html) {
 				onSuccess(html);
 			},
@@ -20,7 +20,8 @@ var RemoteServer = function(url) {
 		$.ajax({
 			type: "POST",
 			url: this.url + action,
-			data: params,
+			contentType: "application/json",
+			data: JSON.stringify(params),
 			success: function(response) {
 				onSuccess(response);
 			},
@@ -52,7 +53,9 @@ function fetch(url) {
 	}
 	server.fetch(url, function(html) {
 		currentUrl = url;
-		scope.context = {};
+		scope.context = {
+			form: {}
+		};
 		context = scope.context;
 		$("#content").html(html);
 		angular.element(document).injector().invoke(function($compile) {
@@ -111,6 +114,22 @@ var context;
 
 angular.module('game', ['ui.bootstrap']).controller('GameCtrl', function($scope) {
 	scope = $scope;
+	scope.debug = {
+		show: false,
+		cmd: "",
+		history: [],
+		exec: function() {
+			server.fetch("debug?cmd=" + scope.debug.cmd, function(result) {
+				scope.debug.history.push({
+					cmd: scope.debug.cmd,
+					result: result
+				});
+				scope.debug.cmd = "";
+				scope.$apply();
+			}, errorHandler);
+			return false;
+		}
+	};
 	scope.context = {
 		form: {}
 	};
